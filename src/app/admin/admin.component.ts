@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../album.model';
+import { AlbumService } from '../album.service';
 
 @Component({
   selector: 'app-admin',
