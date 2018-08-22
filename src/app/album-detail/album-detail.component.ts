@@ -23,9 +23,15 @@ export class AlbumDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.forEach((urlParameters) => {
-      this.albumId = urlParameters['id'];
-    });
-    this.albumToDisplay = this.albumService.getAlbumById(this.albumId);
+    this.route.params.forEach((urlParametersArray) => {
+     this.albumId = urlParametersArray['id'];
+   });
+   this.albumService.getAlbumById(this.albumId).subscribe(dataLastEmittedFromObserver => {
+     this.albumToDisplay = new Album(dataLastEmittedFromObserver.title,
+                                      dataLastEmittedFromObserver.artist,
+                                      dataLastEmittedFromObserver.description)
+
+     console.log(this.albumToDisplay);
+   })
   }
 }
